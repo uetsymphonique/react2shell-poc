@@ -1,9 +1,7 @@
 .next/
 node_modules/
 package-lock.json
-dropper.ps1
-out.b64
-dnscat2.exe
-CWLHerpaderping.exe
-update.ps1
-WindowsHealth.exe
+*.ps1
+*.b64
+*.exe
+__pycache__/

